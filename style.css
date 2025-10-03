@@ -1,0 +1,50 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:#111;font-family:Inter,Arial;color:#eee}
+canvas{display:block}
+
+/* HUD */
+#hud{
+  position:fixed;left:12px;right:12px;bottom:12px;pointer-events:none;
+  display:flex;flex-direction:column;gap:8px;align-items:center;
+}
+#instructions{
+  background:rgba(0,0,0,0.5);padding:8px 12px;border-radius:8px;font-size:14px;pointer-events:auto;
+  box-shadow:0 4px 16px rgba(0,0,0,0.6);
+}
+#hotbar{
+  display:flex;gap:8px;background:rgba(0,0,0,0.45);padding:8px;border-radius:10px;pointer-events:auto;
+  box-shadow:0 6px 20px rgba(0,0,0,0.6);
+}
+.hot-slot{
+  width:48px;height:48px;border-radius:8px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;
+  border:2px solid rgba(255,255,255,0.04);font-weight:700;color:#fff;cursor:pointer;user-select:none;
+}
+.hot-slot.active{outline:3px solid rgba(150,220,255,0.55)}
+#info{background:rgba(0,0,0,0.45);padding:6px 10px;border-radius:8px;pointer-events:auto;font-size:13px}
+#controls{display:flex;gap:8px;pointer-events:auto}
+#controls button{padding:6px 10px;border-radius:8px;border:none;background:#2b2b2b;color:#fff;cursor:pointer}
+#controls button:hover{background:#3a3a3a}
+
+/* Center crosshair */
+.crosshair {
+  position: fixed;
+  top: 50%; left: 50%;
+  width: 14px; height: 14px;
+  margin-left: -7px; margin-top: -7px;
+  pointer-events: none;
+  z-index: 5;
+}
+.crosshair:before, .crosshair:after {
+  content:"";
+  position:absolute; left:50%; top:50%;
+  width:2px; height:14px; background:rgba(255,255,255,0.9);
+  transform-origin:center;
+}
+.crosshair:before{ transform:translate(-50%,-50%) rotate(0deg) }
+.crosshair:after{ transform:translate(-50%,-50%) rotate(90deg) }
+
+/* small mobile hint */
+@media (max-width:700px){
+  #instructions{font-size:12px}
+  .hot-slot{width:40px;height:40px}
+}
